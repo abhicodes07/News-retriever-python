@@ -27,6 +27,21 @@ class Endpoint(REQUEST): # Retrieve news with title
         # print(self.test)
         print(self.response.text)
 
+class Query(REQUEST):
+    pass
+
+class Publisher(REQUEST):
+    pass
+
+class Language(REQUEST):
+    pass
+
+class Date(REQUEST):
+    pass
+
+class Headlines(REQUEST):
+    pass
+
 # main
 if __name__ == "__main__":
     test = Endpoint()
