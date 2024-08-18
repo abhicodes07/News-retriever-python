@@ -25,7 +25,7 @@ class REQUEST: # Making requests
     searchin_description = " "
     searchin_content = " "
 
-    getreq = f"{site}v2/"
+    getreq = f"{site}v2/{endpoint}?"
 
     def __init__(self):
         print("-- WELCOME TO THE NEWS RETRIEVER APP -- \n")
@@ -58,8 +58,29 @@ class Content(REQUEST): # Get Content ready
 class Everything(Content):
     def __init__(self):
         self.endpoint = "everything"
-        self.getreq += "everything"
+        self.query()
 
+    def choices(self):
+        self.query()
+
+        self.choice_4 = input("-- Do you want to search this query in particular field: ")
+        if self.choice_4 == 'y':
+            self.searchIn()
+        else:
+            print()
+
+        self.choice_5 = input("-- Do you want to search this query in particular domain: ")
+        if self.choice_5 == 'y':
+            self.domains()
+        else: 
+            print()
+
+        self.choice_6 = input("-- Do you want to specify the particular date for it: ")
+        if self.choice_6 == 'y':
+            self.date()
+        else: 
+            print()
+    
     def query(self):
         """Keywords or phrases to search for in the article title and body"""
         self.query = input("-- Search News: ")
@@ -93,16 +114,14 @@ class Everything(Content):
         """
         self.domains = input("-- Enter the domain you want to search it in (eg bbc.co.uk, techcrunch.com, engadget.com): ")
     
-    def dateFrom(self):
+    def date(self):
         """
         A date and optional time for the oldest article allowed. This should be in ISO 8601 format (e.g. 2024-08-17 or 2024-08-17T15:34:17)
         """
-        self.date_from = input("-- Enter the starting date (eg '2024-08-17' or '2024-08-17T16:08:03'): ")
-
-    def to(self):
         """
         A date and optional time for the newest article allowed. This should be in ISO 8601 format (e.g. 2024-08-17 or 2024-08-17T15:34:17)
         """
+        self.date_from = input("-- Enter the starting date (eg '2024-08-17' or '2024-08-17T16:08:03'): ")
         self.date_to = input("-- Enter the ending date (eg '2024-08-17' or '2024-08-17T16:08:03'): ")
 
     def language(self):
